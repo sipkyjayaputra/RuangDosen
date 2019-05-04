@@ -1,11 +1,14 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', "AdminLTE")
+
+@section('content_header')
+	<h1>Semester</h1>
+	@stop
 
  @section('content')
- <div class="container">
- 	<div class="row justify-content-center">
- 		<div class="col-md-8">
+ <h2>Buat Semester</h2>
  			<div class="card">
- 				<div class="card-header">Buat Semester Baru</div>
  				<div class="card-body">
  					<form action="{{ url('bkd/semesterNew') }}" method="post">
  						{{ csrf_field() }}
@@ -18,7 +21,4 @@
  					</form>
  				</div>
  			</div>
- 		</div>
- 	</div>
- </div>
  @endsection

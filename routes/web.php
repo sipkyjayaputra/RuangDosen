@@ -32,3 +32,6 @@ Route::get('/bkd/laporan_kerja/{id_smt}/new', ['middleware' => 'auth', 'uses' =>
 Route::post('bkd/laporan_kerja/{id_smt}/new', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@store']);
 
 Route::get('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'FileController@index']);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

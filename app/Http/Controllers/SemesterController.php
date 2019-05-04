@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Semester;
 use App\Laporan_Kerja;
+Use App\User;
 
 class SemesterController extends Controller
 {
@@ -46,7 +47,7 @@ class SemesterController extends Controller
 
         $semester->keterangan = $request->keterangan;
         $semester->status = $request->status;
-        $semester->initiate_status = 0;
+        $semester->user_id = auth()->user()->id;
 
         $semester->Save();
         return redirect('bkd');

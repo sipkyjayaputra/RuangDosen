@@ -10,4 +10,8 @@ class Semester extends Model
     public function Laporan_kerja(){
     	return $this->hasMany('App\Laporan_kerja');
     }
+
+    public function User(){
+    	return $this->belongsTo('App\User');
+    }
 }
