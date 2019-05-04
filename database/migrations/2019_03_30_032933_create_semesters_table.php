@@ -18,6 +18,7 @@ class CreateSemestersTable extends Migration
             $table->String('keterangan');
             $table->integer('status');
             $table->integer('initiate_status');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
