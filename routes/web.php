@@ -37,6 +37,7 @@ Route::delete('/bkd/laporan_kerja/file/{id}/{tipe}', ['middleware' => 'auth', 'u
 
 Route::get('/bkd/laporan_kerja/{id_Doc}/newDOC/{tipe}', ['middleware' => 'auth', 'uses' => 'FileController@create']);
 Route::post('/bkd/laporan_kerja/{id_Doc}/newDOC', ['middleware' => 'auth', 'uses' => 'FileController@store']);
+Route::get('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'FileController@edit']);
 
 //Route::get('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'FileController@index']);
 Auth::routes();

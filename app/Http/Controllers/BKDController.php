@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\semester;
+use App\Semester;
 
 class BKDController extends Controller
 {

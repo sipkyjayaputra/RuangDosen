@@ -110,6 +110,10 @@ class FileController extends Controller
     public function edit($id)
     {
         //
+        $file = File::find($id);
+        $kategoris = Kategori::all();
+        $type = $file->tipe_id;
+        return view('LaporanKerja.editDOC', compact('file','kategoris','type'));
     }
 
     /**
