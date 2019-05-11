@@ -28,10 +28,17 @@ Route::post('bkd/semesterEdit/{id}', ['middleware' => 'auth', 'uses' => 'Semeste
 Route::delete('bkd/semesterDelete/{id}', ['middleware' => 'auth', 'uses' => 'SemesterController@destroy']);
 
 Route::get('/bkd/laporan_kerja/{id_smt}', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@index']);
-Route::get('/bkd/laporan_kerja/{id_smt}/new', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@create']);
-Route::post('bkd/laporan_kerja/{id_smt}/new', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@store']);
+Route::get('/bkd/laporan_kerja/{id_smt}/new/{tipe}', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@create']);
+Route::post('bkd/laporan_kerja/{id_smt}/new/{tipe}', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@store']);
+Route::get('/bkd/laporan_kerja/file/{id}/{tipe}', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@edit']);
+Route::post('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@update']);
+Route::delete('/bkd/laporan_kerja/file/{id}/{tipe}', ['middleware' => 'auth', 'uses' => 'Laporan_KerjaController@destroy']);
 
-Route::get('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'FileController@index']);
+
+Route::get('/bkd/laporan_kerja/{id_Doc}/newDOC/{tipe}', ['middleware' => 'auth', 'uses' => 'FileController@create']);
+Route::post('/bkd/laporan_kerja/{id_Doc}/newDOC', ['middleware' => 'auth', 'uses' => 'FileController@store']);
+
+//Route::get('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'FileController@index']);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
