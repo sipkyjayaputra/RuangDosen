@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -112,27 +113,25 @@ return [
         [
             'text' => 'Semester',
             'url'  => 'bkd',
-            'icon'  => 'file',
+            'icon'  => 'home',
         ],
-        /*[
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
+        [
+            'text'        => 'Riwayat Pendidikan',
+            'url'         => 'admin/riwayatpendidikan',
             'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
         ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/settingsprofile',
             'icon' => 'user',
         ],
         [
             'text' => 'Change Password',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/settingspassword',
             'icon' => 'lock',
         ],
-        [
+        /*[
             'text'    => 'Multilevel',
             'icon'    => 'share',
             'submenu' => [

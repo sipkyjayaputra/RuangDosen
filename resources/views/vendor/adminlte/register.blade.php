@@ -15,7 +15,7 @@
 
         <div class="register-box-body">
             <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
-            <form action="{{ url(config('adminlte.register_url', 'register')) }}" method="post">
+            <form action="{{ url(config('adminlte.register_url', 'register')) }}" method="post" enctype="multipart/form-data">
                 {!! csrf_field() !!}
 
                 <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
@@ -55,6 +55,36 @@
                     @if ($errors->has('password_confirmation'))
                         <span class="help-block">
                             <strong>{{ $errors->first('password_confirmation') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group has-feedback {{ $errors->has('perguruan_tinggi') ? 'has-error' : '' }}">
+                    <input type="text" name="perguruan_tinggi" class="form-control"
+                           placeholder="Perguruan Tinggi">
+                    <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                    @if ($errors->has('perguruan_tinggi'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('perguruan_tinggi') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group has-feedback {{ $errors->has('nidn') ? 'has-error' : '' }}">
+                    <input type="text" name="nidn" class="form-control"
+                           placeholder="NIDN">
+                    <span class="glyphicon glyphicon-code form-control-feedback"></span>
+                    @if ($errors->has('nidn'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('nidn') }}</strong>
+                        </span>
+                    @endif
+                </div>                     
+                <div class="form-group has-feedback {{ $errors->has('foto') ? 'has-error' : '' }}">
+                    <input type="file" name="foto" class="form-control"
+                           >
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('foto'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('foto') }}</strong>
                         </span>
                     @endif
                 </div>

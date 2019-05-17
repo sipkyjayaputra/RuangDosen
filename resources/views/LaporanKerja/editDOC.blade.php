@@ -42,7 +42,7 @@
  						</div>
  						<div class="form-group">
  							<label>File : </label>
- 							<input type="file" name="file">{{$file->filename}}
+ 							<input type="file" name="dok" value="{{$file->filename}}">
  						</div>
  						<div class="form-group">
  							<label>keterangan : </label>

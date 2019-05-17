@@ -126,6 +126,35 @@ class FileController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $dokumen = File::find($id);
+
+        $request->validate([
+            'semester_id' => 'required',
+            'tipe' => 'required',
+            'kategori' => 'required',
+            'nama' => 'required',
+            'keterangan' => 'required'
+        ]);
+        
+        if($request->filename != $dokumen->filename){
+            $tujuan = "../upload_file";
+            $file = $request->file('dok');
+            $nama_file = time()."_".$file->getClientOriginalName();
+            $file->move($tujuan,$nama_file);
+            $dokumen->filename = $nama_file;
+        }else{
+            $dokumen->filename = $dokumen->filename;
+        }
+
+        $dokumen->semester_id = $request->semester_id;
+        $dokumen->tipe_id = $request->tipe;
+        $dokumen->kategori = $request->kategori;
+        $dokumen->nama = $request->nama;
+        $dokumen->keterangan = $request->keterangan;
+
+        $dokumen->save();
+        echo $dokumen->file;
+        return redirect('/bkd/laporan_kerja/'.$request->semester_id);
     }
 
     /**

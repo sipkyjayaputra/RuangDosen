@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -38,8 +37,20 @@ Route::delete('/bkd/laporan_kerja/file/{id}/{tipe}', ['middleware' => 'auth', 'u
 Route::get('/bkd/laporan_kerja/{id_Doc}/newDOC/{tipe}', ['middleware' => 'auth', 'uses' => 'FileController@create']);
 Route::post('/bkd/laporan_kerja/{id_Doc}/newDOC', ['middleware' => 'auth', 'uses' => 'FileController@store']);
 Route::get('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'FileController@edit']);
+Route::post('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'FileController@update']);
 
 //Route::get('/bkd/laporan_kerja/file/{id}', ['middleware' => 'auth', 'uses' => 'FileController@index']);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/settingsprofile', ['middleware' => 'auth', 'uses' => 'EditProfileController@edit']);
+Route::post('/admin/settingsprofile', ['middleware' => 'auth', 'uses' => 'EditProfileController@update']);
+
+Route::get('/admin/settingspassword', ['middleware' => 'auth', 'uses' => 'EditPasswordController@edit']);
+Route::post('/admin/settingspassword', ['middleware' => 'auth', 'uses' => 'EditPasswordController@update']);
+
+Route::post('/register', 'Auth\RegisterController@newCreate');
+
+Route::get('/admin/riwayatpendidikan', ['middleware' => 'auth', 'uses' => 'Riwayat_PendidikanController@index']);
+Route::get('/riwayatpendidikan/add', ['middleware' => 'auth', 'uses' => 'Riwayat_PendidikanController@create']);
+Route::post('/riwayatpendidikan/add', ['middleware' => 'auth', 'uses' => 'Riwayat_PendidikanController@store']);

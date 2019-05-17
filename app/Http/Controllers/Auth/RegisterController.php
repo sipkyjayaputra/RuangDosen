@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -52,6 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'perguruan_tinggi' => ['required', 'string', 'max:225'],
+            'nidn' => ['required', 'string', 'unique:users'],
+            'foto' => ['required', 'string']
         ]);
     }
 
@@ -61,12 +65,46 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+
+    protected function newCreate(Request $request){
+        $user = new User();
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'perguruan_tinggi' => 'required',
+            'nidn' => 'required',
+        ]);
+
+        
+            $tujuan = "../public/foto_profil";
+            $file = $request->file('foto');
+            $nama_file = time()."_".$file->getClientOriginalName();
+            $file->move($tujuan,$nama_file);
+            $user->foto = "foto_profil/".$nama_file;
+
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->perguruan_tinggi = $request->perguruan_tinggi;
+        $user->nidn = $request->nidn;
+        $user->password = Hash::make($request->password);
+
+        $user->Save();
+
+        return redirect('/home');
+    }
+
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'perguruan_tinggi' => $data['perguruan_tinggi'],
+            'nidn' => $data['perguruan_tinggi'],
+            'foto' => $foto
         ]);
     }
 }
