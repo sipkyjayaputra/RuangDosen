@@ -9,7 +9,7 @@
  @section('content')
  			<div class="card">
  				<div class="card-body">
- 					<form action="/bkd/laporan_kerja/file/{{$pkm->id}}" method="post">
+ 					<form action="/bkd/laporan_kerja/{{$pkm->id}}" method="post">
  						{{ csrf_field() }}
  						<div class="form-group">
  							<label>Judul PKM : </label>

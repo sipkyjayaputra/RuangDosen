@@ -1,3 +1,4 @@
+
 @extends('adminlte::page')
 
 @section('title', "AdminLTE")
@@ -45,4 +46,3 @@
 
 
 @stop
-7000584881

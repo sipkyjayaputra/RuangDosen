@@ -77,12 +77,15 @@ class RegisterController extends Controller
             'nidn' => 'required',
         ]);
 
-        
+        if($request->foto != ""){
             $tujuan = "../public/foto_profil";
             $file = $request->file('foto');
             $nama_file = time()."_".$file->getClientOriginalName();
             $file->move($tujuan,$nama_file);
             $user->foto = "foto_profil/".$nama_file;
+        }else{
+            $user->foto = "../public/foto_profil/foto_default.jpg";
+        }
 
 
         $user->name = $request->name;

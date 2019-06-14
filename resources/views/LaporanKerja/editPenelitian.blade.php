@@ -9,7 +9,7 @@
  @section('content')
  			<div class="card">
  				<div class="card-body">
- 					<form action="/bkd/laporan_kerja/file/{{$penelitian->id}}" method="post">
+ 					<form action="/bkd/laporan_kerja/{{$penelitian->id}}" method="post">
  						{{ csrf_field() }}
  						<div class="form-group">
  							<label>Judul Penelitian : </label>

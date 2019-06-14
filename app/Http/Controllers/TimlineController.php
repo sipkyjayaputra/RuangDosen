@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Riwayat_Pendidikan;
-use App\User;
 
-class Riwayat_PendidikanController extends Controller
+class TimlineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,6 @@ class Riwayat_PendidikanController extends Controller
     public function index()
     {
         //
-        $riwayats = Riwayat_Pendidikan::All();
-        return view('Riwayat_Pendidikan.index', compact('riwayats'));
     }
 
     /**
@@ -28,8 +24,6 @@ class Riwayat_PendidikanController extends Controller
     public function create()
     {
         //
-        $user = User::find(auth()->user()->id);
-        return view('Riwayat_Pendidikan.create',compact('user'));
     }
 
     /**
@@ -41,22 +35,6 @@ class Riwayat_PendidikanController extends Controller
     public function store(Request $request)
     {
         //
-        $riwayat = new Riwayat_Pendidikan();
-
-        $request->validate([
-            'gelar' => 'required',
-            'pt' => 'required',
-            'jurusan' => 'required'
-        ]);
-
-        $riwayat->user_id = auth()->user()->id;
-        $riwayat->gelar = $request->gelar;
-        $riwayat->perguruan_tinggi = $request->pt;
-        $riwayat->jurusan = $request->jurusan;
-
-        $riwayat->Save();
-
-        return redirect('/admin/riwayatpendidikan');
     }
 
     /**

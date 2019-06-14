@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Riwayat_Pendidikan;
 
 class EditProfileController extends Controller
 {
@@ -15,6 +16,9 @@ class EditProfileController extends Controller
     public function index()
     {
         //
+        $user = User::find(auth()->user()->id);
+        $riwayats = Riwayat_Pendidikan::all();
+        return view('vendor/adminlte/indexprofil', compact('user','riwayats'));
     }
 
     /**
@@ -59,7 +63,8 @@ class EditProfileController extends Controller
     {
         //
         $user = User::find(auth()->user()->id);
-        return view('vendor/adminlte/editprofile', compact('user'));
+        $riwayats = Riwayat_Pendidikan::All();
+        return view('vendor/adminlte/editprofile', compact('user','riwayats'));
     }
 
     /**
@@ -81,7 +86,7 @@ class EditProfileController extends Controller
             'nidn' => 'required',
         ]);
 
-        if($request->foto != $user->foto){
+        if($request->foto != $user->foto && $request->foto!= ""){
             $tujuan = "../public/foto_profil";
             $file = $request->file('foto');
             $nama_file = time()."_".$file->getClientOriginalName();

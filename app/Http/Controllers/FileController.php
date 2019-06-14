@@ -69,11 +69,10 @@ class FileController extends Controller
             'tipe' => 'required',
             'file' => 'required',
             'kategori' => 'required',
-            'nama' => 'required',
-            'keterangan' => 'required'
+            'nama' => 'required'
         ]);
         
-        $tujuan = "../upload_file";
+        $tujuan = "../public/upload_file";
         $dokumen->semester_id = $request->semester_id;
         $dokumen->tipe_id = $request->tipe;
         $dokumen->kategori = $request->kategori;
@@ -82,7 +81,11 @@ class FileController extends Controller
         $nama_file = time()."_".$file->getClientOriginalName();
         $file->move($tujuan,$nama_file);
         $dokumen->filename = $nama_file;
-        $dokumen->keterangan = $request->keterangan;
+        if($request->keterangan != ""){
+            $dokumen->keterangan = $request->keterangan;
+        }else{
+            $dokumen->keterangan = "";
+        }
 
         $dokumen->save();
         echo $dokumen->file;
@@ -132,12 +135,11 @@ class FileController extends Controller
             'semester_id' => 'required',
             'tipe' => 'required',
             'kategori' => 'required',
-            'nama' => 'required',
-            'keterangan' => 'required'
+            'nama' => 'required'
         ]);
         
-        if($request->filename != $dokumen->filename){
-            $tujuan = "../upload_file";
+        if($request->filename != $dokumen->filename && $request->filename != ""){
+            $tujuan = "../public/upload_file";
             $file = $request->file('dok');
             $nama_file = time()."_".$file->getClientOriginalName();
             $file->move($tujuan,$nama_file);
@@ -146,14 +148,18 @@ class FileController extends Controller
             $dokumen->filename = $dokumen->filename;
         }
 
+        if($request->keterangan != ""){
+            $dokumen->keterangan = $request->keterangan;
+        }else{
+            $dokumen->keterangan = $dokumen->keterangan;
+        }
+
         $dokumen->semester_id = $request->semester_id;
         $dokumen->tipe_id = $request->tipe;
         $dokumen->kategori = $request->kategori;
         $dokumen->nama = $request->nama;
-        $dokumen->keterangan = $request->keterangan;
 
         $dokumen->save();
-        echo $dokumen->file;
         return redirect('/bkd/laporan_kerja/'.$request->semester_id);
     }
 
@@ -166,5 +172,10 @@ class FileController extends Controller
     public function destroy($id)
     {
         //
+        $dokumen = File::Find($id);
+
+        $dokumen->delete();
+
+        return redirect('bkd/laporan_kerja/'.$dokumen->semester_id);
     }
 }

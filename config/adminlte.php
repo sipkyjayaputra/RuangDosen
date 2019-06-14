@@ -116,14 +116,14 @@ return [
             'icon'  => 'home',
         ],
         [
-            'text'        => 'Riwayat Pendidikan',
-            'url'         => 'admin/riwayatpendidikan',
-            'icon'        => 'file',
+            'text' => 'Log Aktivitas',
+            'url' => 'log_aktivitas',
+            'icon' => 'home',
         ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
-            'url'  => 'admin/settingsprofile',
+            'url'  => 'admin/profile',
             'icon' => 'user',
         ],
         [

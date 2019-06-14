@@ -39,8 +39,8 @@
 										<td>{{ $pengajaran->sks }}</td>
 										<td>{{ $pengajaran->pt }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$pengajaran->id}}/pengajaran">Edit</a>
-											<form action="/bkd/laporan_kerja/file/{{$pengajaran->id}}/pengajaran" method="post" >
+											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$pengajaran->id}}/pengajaran">Edit</a>
+											<form action="/bkd/laporan_kerja/{{$pengajaran->id}}/pengajaran" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
 												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
@@ -71,9 +71,9 @@
 										<td>{{ $file->nama }}</td>
 										<td>{{ $file->keterangan }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}">Edit</a>
-											<a class="btn btn-success btn-sm col-sm-2" href="{{ $file->filename }}" download="{{$file->nama}}">Download</a>
-											<form action="/bkd/laporan_kerja/file/{{$file->id}}" method="post" >
+											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/pengajaran">Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2" href="/file/{{$file->filename}}/{{$file->semester_id}}">Download</a>
+											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
 												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
@@ -109,8 +109,8 @@
 							<td>{{ $penelitian->durasi}}</td>
 							<td>{{ $penelitian->keterangan }}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$penelitian->id}}/penelitian">Edit</a>
-								<form action="/bkd/laporan_kerja/file/{{$penelitian->id}}/penelitian" method="post" >
+								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$penelitian->id}}/penelitian">Edit</a>
+								<form action="/bkd/laporan_kerja/{{$penelitian->id}}/penelitian" method="post" >
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
 									<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
@@ -135,7 +135,24 @@
 							<th>keterangan</th>
 							<th>Tindakan</th>
 						</tr>
-
+						@foreach($files as $file)
+									<?php if($file->semester_id == $semester->id && $file->tipe_id==2){  ?>
+									<tr>
+										<td>{{ $file->kategori }}</td>
+										<td>{{ $file->nama }}</td>
+										<td>{{ $file->keterangan }}</td>
+										<td class="col-sm-6">
+											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian">Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2" href="{{asset($file->filename)}}" download="{{$file->nama}}">Download</a>
+											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
+												{{ csrf_field() }}
+												{{ method_field('DELETE') }}
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+											</form> 
+										</td>
+									</tr>
+									<?php }	?>
+									@endforeach
 					</table>
 				</div>
 				</div>
@@ -162,8 +179,8 @@
 							<td>{{ $pkm->tempat}}</td>
 							<td>{{ $pkm->tanggal }}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$pkm->id}}/pkm">Edit</a>
-								<form action="/bkd/laporan_kerja/file/{{$pkm->id}}/pkm" method="post" >
+								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$pkm->id}}/pkm">Edit</a>
+								<form action="/bkd/laporan_kerja/{{$pkm->id}}/pkm" method="post" >
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
 									<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
@@ -187,7 +204,24 @@
 							<th>keterangan</th>
 							<th>Tindakan</th>
 						</tr>
-
+						@foreach($files as $file)
+									<?php if($file->semester_id == $semester->id && $file->tipe_id==3){  ?>
+									<tr>
+										<td>{{ $file->kategori }}</td>
+										<td>{{ $file->nama }}</td>
+										<td>{{ $file->keterangan }}</td>
+										<td class="col-sm-6">
+											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian">Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2" href="{{asset($file->filename)}}" download="{{$file->nama}}">Download</a>
+											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
+												{{ csrf_field() }}
+												{{ method_field('DELETE') }}
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+											</form> 
+										</td>
+									</tr>
+									<?php }	?>
+									@endforeach
 					</table>
 				</div>
 			</div>
@@ -213,8 +247,8 @@
 							<td>{{ $publikasi->halaman}}</td>
 							<td>{{ $publikasi->penulis }}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$publikasi->id}}/publikasi">Edit</a>
-								<form action="/bkd/laporan_kerja/file/{{$publikasi->id}}/publikasi" method="post" >
+								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$publikasi->id}}/publikasi">Edit</a>
+								<form action="/bkd/laporan_kerja/{{$publikasi->id}}/publikasi" method="post" >
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
 									<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
@@ -238,7 +272,24 @@
 							<th>keterangan</th>
 							<th>Tindakan</th>
 						</tr>
-
+						@foreach($files as $file)
+									<?php if($file->semester_id == $semester->id && $file->tipe_id==4){  ?>
+									<tr>
+										<td>{{ $file->kategori }}</td>
+										<td>{{ $file->nama }}</td>
+										<td>{{ $file->keterangan }}</td>
+										<td class="col-sm-6">
+											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian">Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2" href="{{asset($file->filename)}}" download="{{$file->nama}}">Download</a>
+											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
+												{{ csrf_field() }}
+												{{ method_field('DELETE') }}
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+											</form> 
+										</td>
+									</tr>
+									<?php }	?>
+									@endforeach
 					</table>
 				</div>
 			</div>
@@ -266,9 +317,9 @@
 							<td>{{ $lainlain->kategori}}</td>
 							<td>{{ $lainlain->keterangan }}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$lainlain->id}}/lainlain">Edit</a>
+								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$lainlain->id}}/lainlain">Edit</a>
 
-								<form action="/bkd/laporan_kerja/file/{{$lainlain->id}}/lainlain" method="post" >
+								<form action="/bkd/laporan_kerja/{{$lainlain->id}}/lainlain" method="post" >
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
 									<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
@@ -292,6 +343,24 @@
 							<th>keterangan</th>
 							<th>Tindakan</th>
 						</tr>
+						@foreach($files as $file)
+									<?php if($file->semester_id == $semester->id && $file->tipe_id==5){  ?>
+									<tr>
+										<td>{{ $file->kategori }}</td>
+										<td>{{ $file->nama }}</td>
+										<td>{{ $file->keterangan }}</td>
+										<td class="col-sm-6">
+											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian">Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2" href="{{asset($file->filename)}}" download="{{$file->nama}}">Download</a>
+											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
+												{{ csrf_field() }}
+												{{ method_field('DELETE') }}
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+											</form> 
+										</td>
+									</tr>
+									<?php }	?>
+									@endforeach
 					</table>
 				</div>
 			</div>
