@@ -25,7 +25,7 @@
  						</div>
  						<input type="hidden" name="tipe" value="publikasi">
  						<input type="hidden" name="semester_id" value="{{ $semester->id }}">
- 						<button type="submit" class="btn btn-primary">Simpan</button>
+ 						<button type="submit" class="btn btn-primary glyphicon glyphicon-save"> Simpan</button>
  					</form>
  				</div>
  			</div>

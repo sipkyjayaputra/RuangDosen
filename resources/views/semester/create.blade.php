@@ -17,7 +17,7 @@
  							<input type="text" name="keterangan" class="form-control">
  						</div>
  						<input type="hidden" name="status" value="0">
- 						<button type="submit" class="btn btn-primary">Simpan</button>
+ 						<button type="submit" class="btn btn-primary  glyphicon glyphicon-save">Simpan</button>
  					</form>
  				</div>
  			</div>

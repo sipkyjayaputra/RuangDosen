@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Semester;
 use App\Laporan_Kerja;
 Use App\User;
+Use App\Log_Aktivitas;
 
 class SemesterController extends Controller
 {
@@ -50,6 +51,7 @@ class SemesterController extends Controller
         $semester->user_id = auth()->user()->id;
 
         $semester->Save();
+        Self::addActivity(0,0,"Melakukan Penambahan Semester ".$semester->keterangan);
         return redirect('bkd');
     }
 
@@ -99,7 +101,7 @@ class SemesterController extends Controller
         $semester->status = $request->status;
 
         $semester->save();
-
+        Self::addActivity(0,0,"Melakukan Perubahan pada Semester");
         return redirect('bkd');
 
     }
@@ -115,7 +117,19 @@ class SemesterController extends Controller
         //
         $semester = Semester::find($id);
         $semester->delete();
+        Self::addActivity(0,0,"Melakukan Penghapusan terhadap Semester ".$semester->keterangan);
 
         return redirect('bkd');
+    }
+
+    public function addActivity($semester_id,$kategori_id,$keterangan){
+        $aktivitas = new Log_Aktivitas();
+        $aktivitas->user_id = auth()->user()->id;
+
+        $aktivitas->semester_id = $semester_id;
+        $aktivitas->kategori_id = $kategori_id;
+        $aktivitas->keterangan = $keterangan;
+
+        $aktivitas->Save();
     }
 }

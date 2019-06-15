@@ -30,11 +30,11 @@
 										<td>{{ $riwayat->perguruan_tinggi }}</td>
 										<td>{{ $riwayat->jurusan }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/riwayatpendidikan/edit/{{$riwayat->id}}">Edit</a>
+											<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/riwayatpendidikan/edit/{{$riwayat->id}}"> Edit</a>
 											<form action="/riwayatpendidikan/delete/{{$riwayat->id}}" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
-												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 											</form> 
 										</td>
 									</tr>

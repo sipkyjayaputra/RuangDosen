@@ -64,7 +64,7 @@
  							<label>Jurusan</label>
  							<input type="text" name="jurusan" class="form-control">
  						</div>
- 						<button type="submit" class="btn btn-primary">Simpan</button>
+ 						<button type="submit" class="btn btn-primary glyphicon glyphicon-save">Simpan</button>
  					</form>
  				</div>
  				</div>

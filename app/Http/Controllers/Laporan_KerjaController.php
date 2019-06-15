@@ -12,6 +12,7 @@ use App\PKM;
 use App\Publikasi;
 use App\Lainlain;
 use App\File;
+use App\Log_Aktivitas;
 
 class Laporan_KerjaController extends Controller
 {
@@ -85,6 +86,7 @@ class Laporan_KerjaController extends Controller
             $pengajaran->pt = $request->pt;
 
             $pengajaran->save();
+            Self::addActivity($pengajaran->semester_id,1,"Melakukan penambahan Mata Kuliah ".$pengajaran->nama_mk);
         } break;
         case "penelitian" : {
             $penelitian = new Penelitian();
@@ -102,6 +104,7 @@ class Laporan_KerjaController extends Controller
             $penelitian->keterangan = $request->keterangan;
 
             $penelitian->save();
+            Self::addActivity($penelitian->semester_id,2,"Melakukan penambahan Penelitian ".$penelitian->judul);
         }break;
         case "pkm" : {
             $pkm = new PKM();
@@ -119,6 +122,7 @@ class Laporan_KerjaController extends Controller
             $pkm->tanggal = $request->tanggal;
 
             $pkm->save();
+            Self::addActivity($pkm->semester_id,3,"Melakukan penambahan PKM ".$pkm->judul);
         }break;
         case "publikasi" : {
             $publikasi = new Publikasi();
@@ -136,6 +140,7 @@ class Laporan_KerjaController extends Controller
             $publikasi->penulis = $request->penulis;
 
             $publikasi->save();
+            Self::addActivity($pkm->semester_id,4,"Melakukan penambahan Publikasi ".$publikasi->judul);
         }break;
         case "lainlain" : {
             $lainlain = new Lainlain();
@@ -153,6 +158,7 @@ class Laporan_KerjaController extends Controller
             $lainlain->keterangan = $request->keterangan;
 
             $lainlain->save();
+            Self::addActivity($lainlain->semester_id,5,"Melakukan penambahan Lain-lain ".$lainlain->jenis);
         }break;
         default : {
 
@@ -242,6 +248,7 @@ class Laporan_KerjaController extends Controller
             $pengajaran->pt = $request->pt;
 
             $pengajaran->save();
+            Self::addActivity($pengajaran->semester_id,1,"Melakukan pengubahan terhadap Mata Kuliah");
         } break;
         case "penelitian" : {
             $penelitian = Penelitian::find($id);
@@ -259,6 +266,7 @@ class Laporan_KerjaController extends Controller
             $penelitian->keterangan = $request->keterangan;
 
             $penelitian->save();
+            Self::addActivity($penelitian->semester_id,2,"Melakukan pengubahan terhadap Penelitian");
         }break;
         case "pkm" : {
             $pkm = PKM::find($id);
@@ -276,6 +284,7 @@ class Laporan_KerjaController extends Controller
             $pkm->tanggal = $request->tanggal;
 
             $pkm->save();
+            Self::addActivity($pkm->semester_id,3,"Melakukan pengubahan terhadap PKM");
         }break;
         case "publikasi" : {
             $publikasi = Publikasi::find($id);
@@ -293,6 +302,7 @@ class Laporan_KerjaController extends Controller
             $publikasi->penulis = $request->penulis;
 
             $publikasi->save();
+            Self::addActivity($publikasi->semester_id,4,"Melakukan pengubahan terhadap Publikasi");
         }break;
         case "lainlain" : {
             $lainlain = Lainlain::find($id);
@@ -310,6 +320,7 @@ class Laporan_KerjaController extends Controller
             $lainlain->keterangan = $request->keterangan;
 
             $lainlain->save();
+            Self::addActivity($pengajaran->semester_id,5,"Melakukan pengubahan terhadap Lain-lain");
         }break;
         default : {
 
@@ -334,26 +345,31 @@ class Laporan_KerjaController extends Controller
                 $pengajaran = Pengajaran::find($id);
                 $semester_id = $pengajaran->semester_id;
                 $pengajaran->delete();
+                Self::addActivity($pengajaran->semester_id,1,"Melakukan penghapusan terhadap Mata Kuliah ".$pengajaran->nama_mk);
             }break;
             case "penelitian" : {
                 $penelitian = Penelitian::find($id);
                 $semester_id = $penelitian->semester_id;
                 $penelitian->delete();
+                Self::addActivity($penelitian->semester_id,2,"Melakukan penghapusan terhadap Penelitian ".$penelitian->judul);
             }break;
             case "pkm" : {
                 $pkm = PKM::find($id);
                 $semester_id = $pkm->semester_id;
                 $pkm->delete();
+                Self::addActivity($pkm->semester_id,3,"Melakukan penghapusan terhadap PKM ".$pkm->judul);
             }break;
             case "publikasi" : {
                 $publikasi = Publikasi::find($id);
                 $semester_id = $publikasi->semester_id;
                 $publikasi->delete();
+                Self::addActivity($publikasi->semester_id,4,"Melakukan penghapusan terhadap Publikasi ".$publikasi->judul);
             }break;
             case "lainlain" : {
                 $lainlain = Lainlain::find($id);
                 $semester_id = $lainlain->semester_id;
                 $lainlain->delete();
+                Self::addActivity($lainlain->semester_id,5,"Melakukan penghapusan terhadap Lain-lain ".$lainlain->jenis);
             }break;
             default : {
 
@@ -362,5 +378,16 @@ class Laporan_KerjaController extends Controller
 
 
         return redirect('/bkd/laporan_kerja/'.$semester_id);
+    }
+
+    public function addActivity($semester_id,$kategori_id,$keterangan){
+        $aktivitas = new Log_Aktivitas();
+        $aktivitas->user_id = auth()->user()->id;;
+
+        $aktivitas->semester_id = $semester_id;
+        $aktivitas->kategori_id = $kategori_id;
+        $aktivitas->keterangan = $keterangan;
+
+        $aktivitas->Save();
     }
 }

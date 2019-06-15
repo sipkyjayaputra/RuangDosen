@@ -14,7 +14,7 @@
 							<input type="text" name="keterangan" value="{{$semester->keterangan}}" class="form-control">
 						</div>
 						<input type="hidden" name="status" value="{{$semester->status}}" >
-						<button type="submit" class="btn btn-primary">Simpan</button>
+						<button type="submit" class="btn btn-primary  glyphicon glyphicon-save">Simpan</button>
 					</form>
 				</div>
 			</div>

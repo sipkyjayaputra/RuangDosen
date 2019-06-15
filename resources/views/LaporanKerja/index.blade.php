@@ -39,11 +39,11 @@
 										<td>{{ $pengajaran->sks }}</td>
 										<td>{{ $pengajaran->pt }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$pengajaran->id}}/pengajaran">Edit</a>
+											<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/{{$pengajaran->id}}/pengajaran"> Edit</a>
 											<form action="/bkd/laporan_kerja/{{$pengajaran->id}}/pengajaran" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
-												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 											</form> 
 										</td>
 									</tr>
@@ -71,12 +71,12 @@
 										<td>{{ $file->nama }}</td>
 										<td>{{ $file->keterangan }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/pengajaran">Edit</a>
-											<a class="btn btn-success btn-sm col-sm-2" href="/file/{{$file->filename}}/{{$file->semester_id}}">Download</a>
+											<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/file/{{$file->id}}/pengajaran"> Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2 glyphicon glyphicon-save" href="/file/{{$file->filename}}"> Download</a>
 											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
-												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 											</form> 
 										</td>
 									</tr>
@@ -109,11 +109,11 @@
 							<td>{{ $penelitian->durasi}}</td>
 							<td>{{ $penelitian->keterangan }}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$penelitian->id}}/penelitian">Edit</a>
+								<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/{{$penelitian->id}}/penelitian"> Edit</a>
 								<form action="/bkd/laporan_kerja/{{$penelitian->id}}/penelitian" method="post" >
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
-									<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+									<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 								</form> 
 							</td>
 						</tr>
@@ -142,12 +142,12 @@
 										<td>{{ $file->nama }}</td>
 										<td>{{ $file->keterangan }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian">Edit</a>
-											<a class="btn btn-success btn-sm col-sm-2" href="{{asset($file->filename)}}" download="{{$file->nama}}">Download</a>
+											<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian"> Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2 glyphicon glyphicon-save" href="/file/{{$file->filename}}"> Download</a>
 											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
-												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 											</form> 
 										</td>
 									</tr>
@@ -179,11 +179,11 @@
 							<td>{{ $pkm->tempat}}</td>
 							<td>{{ $pkm->tanggal }}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$pkm->id}}/pkm">Edit</a>
+								<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/{{$pkm->id}}/pkm"> Edit</a>
 								<form action="/bkd/laporan_kerja/{{$pkm->id}}/pkm" method="post" >
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
-									<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+									<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 								</form> 
 							</td>
 						</tr>
@@ -211,12 +211,12 @@
 										<td>{{ $file->nama }}</td>
 										<td>{{ $file->keterangan }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian">Edit</a>
-											<a class="btn btn-success btn-sm col-sm-2" href="{{asset($file->filename)}}" download="{{$file->nama}}">Download</a>
+											<a class="btn btn-primary btn-sm col-sm-2 " href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian"> Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2 glyphicon glyphicon-save" href="/file/{{$file->filename}}">Download</a>
 											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
-												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 											</form> 
 										</td>
 									</tr>
@@ -247,11 +247,11 @@
 							<td>{{ $publikasi->halaman}}</td>
 							<td>{{ $publikasi->penulis }}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$publikasi->id}}/publikasi">Edit</a>
+								<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/{{$publikasi->id}}/publikasi"> Edit</a>
 								<form action="/bkd/laporan_kerja/{{$publikasi->id}}/publikasi" method="post" >
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
-									<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+									<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 								</form> 
 							</td>
 						</tr>
@@ -279,12 +279,12 @@
 										<td>{{ $file->nama }}</td>
 										<td>{{ $file->keterangan }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian">Edit</a>
-											<a class="btn btn-success btn-sm col-sm-2" href="{{asset($file->filename)}}" download="{{$file->nama}}">Download</a>
+											<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian"> Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2 glyphicon glyphicon-save" href="/file/{{$file->filename}}"> Download</a>
 											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
-												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 											</form> 
 										</td>
 									</tr>
@@ -317,12 +317,12 @@
 							<td>{{ $lainlain->kategori}}</td>
 							<td>{{ $lainlain->keterangan }}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/{{$lainlain->id}}/lainlain">Edit</a>
+								<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/{{$lainlain->id}}/lainlain"> Edit</a>
 
 								<form action="/bkd/laporan_kerja/{{$lainlain->id}}/lainlain" method="post" >
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
-									<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+									<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 								</form> 
 							</td>
 						</tr>
@@ -350,12 +350,12 @@
 										<td>{{ $file->nama }}</td>
 										<td>{{ $file->keterangan }}</td>
 										<td class="col-sm-6">
-											<a class="btn btn-primary btn-sm col-sm-2" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian">Edit</a>
-											<a class="btn btn-success btn-sm col-sm-2" href="{{asset($file->filename)}}" download="{{$file->nama}}">Download</a>
+											<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/laporan_kerja/file/{{$file->id}}/penelitian"> Edit</a>
+											<a class="btn btn-success btn-sm col-sm-2 glyphicon glyphicon-save" href="/file/{{$file->filename}}"> Download</a>
 											<form action="/bkd/laporan_kerjas/file/{{$file->id}}" method="post" >
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
-												<button type="submit" class="btn btn-danger btn-sm col-sm-2">Hapus</button>
+												<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 											</form> 
 										</td>
 									</tr>

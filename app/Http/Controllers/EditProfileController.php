@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Riwayat_Pendidikan;
+use App\Log_Aktivitas;
 
 class EditProfileController extends Controller
 {
@@ -102,6 +103,7 @@ class EditProfileController extends Controller
         $user->nidn = $request->nidn;
 
         $user->Save();
+        Self::addActivity(0,0,"Melakukan Perubahan Profile");
 
         return redirect('/home');
     }
@@ -115,5 +117,13 @@ class EditProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addActivity($semester_id,$kategori_id,$keterangan){
+        $aktivitas = new Log_Aktivitas();
+        $aktivitas->user_id = auth()->user()->id;;
+        $aktivtias->semester_id = $semester_id;
+        $aktivtias->kategori_id = $kategori_id;
+        $keterangan->keterangan = $keterangan;
     }
 }

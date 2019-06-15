@@ -7,6 +7,8 @@ use App\Kategori;
 use App\Pengajaran;
 use App\Semester;
 use App\File;
+use App\Log_Aktivitas;\
+
 class FileController extends Controller
 {
     /**
@@ -88,6 +90,7 @@ class FileController extends Controller
         }
 
         $dokumen->save();
+        Self::addActivity($dokumen->semester_id,$dokumen->kategori,"Melakukan Penambahan file ".$nama_file);
         echo $dokumen->file;
         return redirect('/bkd/laporan_kerja/'.$request->semester_id);
     }
@@ -160,6 +163,7 @@ class FileController extends Controller
         $dokumen->nama = $request->nama;
 
         $dokumen->save();
+        Self::addActivity($dokumen->semester_id,$dokumen->kategori,"Melakukan Perubahan pada File ");
         return redirect('/bkd/laporan_kerja/'.$request->semester_id);
     }
 
@@ -175,7 +179,19 @@ class FileController extends Controller
         $dokumen = File::Find($id);
 
         $dokumen->delete();
+        Self::addActivity($dokumen->semester_id,$dokumen->kategori,"Melakukan Penghapusan pada File ".$dokumen->nama);
 
         return redirect('bkd/laporan_kerja/'.$dokumen->semester_id);
+    }
+
+    public function addActivity($semester_id,$kategori_id,$keterangan){
+        $aktivitas = new Log_Aktivitas();
+        $aktivitas->user_id = auth()->user()->id;;
+
+        $aktivitas->semester_id = $semester_id;
+        $aktivitas->kategori_id = $kategori;
+        $aktivitas->keterangan = $keterangan;
+
+        $aktivitas->Save();
     }
 }

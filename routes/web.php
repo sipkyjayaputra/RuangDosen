@@ -59,4 +59,4 @@ Route::get('/admin/riwayatpendidikan', ['middleware' => 'auth', 'uses' => 'Riway
 Route::get('/riwayatpendidikan/add', ['middleware' => 'auth', 'uses' => 'Riwayat_PendidikanController@create']);
 Route::post('/riwayatpendidikan/add', ['middleware' => 'auth', 'uses' => 'Riwayat_PendidikanController@store']);
 
-Route::get('/file/{file_download}/{semester-id}',['middleware' => 'auth', 'uses' => 'DownloadController@download']);
+Route::get('/file/{file_download}',['middleware' => 'auth', 'uses' => 'DownloadController@download']);

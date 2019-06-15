@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Log_Aktivitas;
 
 class Log_KegiatanController extends Controller
 {
@@ -14,7 +15,9 @@ class Log_KegiatanController extends Controller
     public function index()
     {
         //
-        return view('Log_Aktivitas.index');        
+        $aktivitass = Log_Aktivitas::All();
+        $user_id = auth()->user()->id;
+        return view('Log_Aktivitas.index', compact('aktivitass','user_id'));        
     }
 
     /**

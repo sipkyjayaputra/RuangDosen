@@ -118,7 +118,7 @@ return [
         [
             'text' => 'Log Aktivitas',
             'url' => 'log_aktivitas',
-            'icon' => 'home',
+            'icon' => 'list-alt',
         ],
         'ACCOUNT SETTINGS',
         [

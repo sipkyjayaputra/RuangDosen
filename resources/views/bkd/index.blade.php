@@ -7,7 +7,7 @@
 	@stop
 
 @section('content')
-					<a href="/bkd/semesterNew" class="btn btn-primary">Buat Semester</a>
+					<a href="/bkd/semesterNew" class="btn btn-primary glyphicon glyphicon-plus-sign"> Create</a>
 					<table class="table table-striped">
 						<tr>
 							<th>Semester</th>
@@ -20,13 +20,13 @@
 							<td>{{ $semester->keterangan }}</td>
 							<td>{{ $semester->status == 1?'Completed':'Incompleted'}}</td>
 							<td class="col-sm-6">
-								<a class="btn btn-secondary btn-sm col-sm-2"  href="/bkd/semesterEdit/{{ $semester->id }}">Edit</a> 
+								<a class="btn btn-success btn-sm col-sm-2 glyphicon glyphicon-edit" href="/bkd/semesterEdit/{{ $semester->id }}"> Edit</a> 
 								<form action="/bkd/semesterDelete/{{$semester->id}}" method="post">
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
-									<button type="submit" class="btn btn-danger btn-sm col-sm-2" >Hapus</button>
+									<button type="submit" class="btn btn-danger btn-sm col-sm-2 glyphicon glyphicon-trash"> Hapus</button>
 								</form> 
-								<a class="btn btn-primary btn-sm col-sm-2"  href="/bkd/laporan_kerja/{{ $semester->id }}">view</a>
+								<a class="btn btn-primary btn-sm col-sm-2 glyphicon glyphicon-list-alt" href="/bkd/laporan_kerja/{{ $semester->id }}"> View</a>
 							</td>
 						</tr>
 					<?php } ?>

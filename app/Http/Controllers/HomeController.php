@@ -31,8 +31,6 @@ class HomeController extends Controller
             $kategori->type_id = 1;
             $kategori->save();
 
-            echo "pankapan";
-
             $kategori = new Kategori();
             $kategori->keterangan = "Kartu Realisasi Perkuliahan";
             $kategori->type_id = 1;

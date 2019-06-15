@@ -55,6 +55,7 @@ class Riwayat_PendidikanController extends Controller
         $riwayat->jurusan = $request->jurusan;
 
         $riwayat->Save();
+        Self::addActivity(0,0,"Melakukan Penambahan pada riwayat pendidikan");
 
         return redirect('/admin/riwayatpendidikan');
     }
@@ -102,5 +103,16 @@ class Riwayat_PendidikanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addActivity($semester_id,$kategori_id,$keterangan){
+        $aktivitas = new Log_Aktivitas();
+        $aktivitas->user_id = auth()->user()->id;;
+
+        $aktivitas->semester_id = $semester_id;
+        $aktivitas->kategori_id = $kategori_id;
+        $aktivitas->keterangan = $keterangan;
+
+        $aktivitas->Save();
     }
 }
