@@ -122,8 +122,10 @@ class EditProfileController extends Controller
     public function addActivity($semester_id,$kategori_id,$keterangan){
         $aktivitas = new Log_Aktivitas();
         $aktivitas->user_id = auth()->user()->id;;
-        $aktivtias->semester_id = $semester_id;
-        $aktivtias->kategori_id = $kategori_id;
-        $keterangan->keterangan = $keterangan;
+        $aktivitas->semester_id = $semester_id;
+        $aktivitas->kategori_id = $kategori_id;
+        $aktivitas->keterangan = $keterangan;
+
+        $aktivitas->Save();
     }
 }

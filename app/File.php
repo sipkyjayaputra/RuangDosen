@@ -32,4 +32,9 @@ class File extends Model
     		default : break;
     	}
     }
+
+    
+    public function getUpdatedAtAttributes(){
+        retrun \Carbon\Carbon::parse($this->attributes['updated_at'])->diffForHumans();
+    }
 }

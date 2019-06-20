@@ -18,4 +18,9 @@ class Laporan_Kerja extends Model
     public function Kategori(){
     	return $this->belongsTo('App\Kategori');
     }
+
+    
+    public function getUpdatedAtAttributes(){
+        retrun \Carbon\Carbon::parse($this->attributes['updated_at'])->diffForHumans();
+    }
 }

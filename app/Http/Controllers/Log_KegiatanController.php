@@ -15,7 +15,7 @@ class Log_KegiatanController extends Controller
     public function index()
     {
         //
-        $aktivitass = Log_Aktivitas::All();
+        $aktivitass = Log_Aktivitas::All()->sortByDesc('updated_at');
         $user_id = auth()->user()->id;
         return view('Log_Aktivitas.index', compact('aktivitass','user_id'));        
     }

@@ -120,6 +120,11 @@ return [
             'url' => 'log_aktivitas',
             'icon' => 'list-alt',
         ],
+        [
+            'text' => 'Search',
+            'url' => 'search',
+            'icon' => 'search',
+        ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',

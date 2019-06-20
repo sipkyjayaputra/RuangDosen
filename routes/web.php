@@ -60,3 +60,6 @@ Route::get('/riwayatpendidikan/add', ['middleware' => 'auth', 'uses' => 'Riwayat
 Route::post('/riwayatpendidikan/add', ['middleware' => 'auth', 'uses' => 'Riwayat_PendidikanController@store']);
 
 Route::get('/file/{file_download}',['middleware' => 'auth', 'uses' => 'DownloadController@download']);
+
+Route::get('/search',['middleware' => 'auth', 'uses' => 'SearchController@index']);
+Route::post('/search/hasil',['middleware' => 'auth', 'uses' => 'SearchController@search']); 

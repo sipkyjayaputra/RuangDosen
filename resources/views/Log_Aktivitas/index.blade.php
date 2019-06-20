@@ -23,14 +23,14 @@
 							<div class="card-header panel-heading">Timeline Umum
 							</div>
 							<div class="card-body panel-body">
+								<ul class="timeline">
 								@foreach($aktivitass as $aktivitas)
 								<?php if($aktivitas->user_id == $user_id){ ?>
-								<ul class="timeline">
 
 								    <!-- timeline time label -->
 								    <li class="time-label">
 								        <span class="bg-red">
-								            <?php echo (substr($aktivitas->updated_at, 0,11)); ?>
+								        	{{\Carbon\Carbon::parse($aktivitas->updated_at)->diffForHumans()}}
 								        </span>
 								    </li>
 								    <!-- /.timeline-label -->
@@ -55,21 +55,21 @@
 
 								            <div class="timeline-body">
 								                {{$aktivitas->Keterangan}}
-								            </div> 
+								            </div>  
 
-								            <!-- <div class="timeline-footer">
-								                <a class="btn btn-primary btn-xs">...</a>
-								            </div> -->
+								            <div class="timeline-footer">
+								                <!--<a class="btn btn-primary btn-xs">...</a> -->
+								            </div>
 								        </div>
 								    </li>
 								    <!-- END timeline item -->
 
-								    ...
+								    
 
-								</ul>
+								
 								<?php } ?>
 								@endforeach
-
+								</ul>
 							</div>
 						</div>
 
@@ -82,14 +82,14 @@
 							<div class="card-header panel-heading">Timeline Pengajaran
 							</div>
 							<div class="card-body panel-body">
+								<ul class="timeline">
 								@foreach($aktivitass as $aktivitas)
 								<?php if($aktivitas->user_id == $user_id && $aktivitas->kategori_id == 1){ ?>
-								<ul class="timeline">
 
 								    <!-- timeline time label -->
 								    <li class="time-label">
 								        <span class="bg-red">
-								            <?php echo (substr($aktivitas->updated_at, 0,11)); ?>
+								        	{{\Carbon\Carbon::parse($aktivitas->updated_at)->diffForHumans()}}
 								        </span>
 								    </li>
 								    <!-- /.timeline-label -->
@@ -114,20 +114,20 @@
 
 								            <div class="timeline-body">
 								                {{$aktivitas->Keterangan}}
-								            </div> 
+								            </div>  
 
-								            <!-- <div class="timeline-footer">
-								                <a class="btn btn-primary btn-xs">...</a>
-								            </div> -->
+								            <div class="timeline-footer">
+								                <!--<a class="btn btn-primary btn-xs">...</a> -->
+								            </div>
 								        </div>
 								    </li>
 								    <!-- END timeline item -->
 
-								    ...
+								    
 
-								</ul>
 								<?php } ?>
 								@endforeach
+								</ul>
 
 							</div>
 						</div>
@@ -140,14 +140,14 @@
 				<div class="card-header panel-heading">Timeline Penelitian
 				</div>
 				<div class="card-body panel-body">
+								<ul class="timeline">
 								@foreach($aktivitass as $aktivitas)
 								<?php if($aktivitas->user_id == $user_id && $aktivitas->kategori_id == 2){ ?>
-								<ul class="timeline">
 
 								    <!-- timeline time label -->
 								    <li class="time-label">
 								        <span class="bg-red">
-								            <?php echo (substr($aktivitas->updated_at, 0,11)); ?>
+								        	{{\Carbon\Carbon::parse($aktivitas->updated_at)->diffForHumans()}}
 								        </span>
 								    </li>
 								    <!-- /.timeline-label -->
@@ -172,20 +172,20 @@
 
 								            <div class="timeline-body">
 								                {{$aktivitas->Keterangan}}
-								            </div> 
+								            </div>  
 
-								            <!-- <div class="timeline-footer">
-								                <a class="btn btn-primary btn-xs">...</a>
-								            </div> -->
+								            <div class="timeline-footer">
+								                <!--<a class="btn btn-primary btn-xs">...</a> -->
+								            </div>
 								        </div>
 								    </li>
 								    <!-- END timeline item -->
 
-								    ...
+								    
 
-								</ul>
 								<?php } ?>
 								@endforeach
+								</ul>
 				</div>
 				</div>
 
@@ -196,14 +196,14 @@
 				<div class="card-header panel-heading">Timeline PKM
 				</div>
 				<div class="card-body panel-body">
+								<ul class="timeline">
 								@foreach($aktivitass as $aktivitas)
 								<?php if($aktivitas->user_id == $user_id && $aktivitas->kategori_id == 3){ ?>
-								<ul class="timeline">
 
 								    <!-- timeline time label -->
 								    <li class="time-label">
 								        <span class="bg-red">
-								            <?php echo (substr($aktivitas->updated_at, 0,11)); ?>
+								        	{{\Carbon\Carbon::parse($aktivitas->updated_at)->diffForHumans()}}
 								        </span>
 								    </li>
 								    <!-- /.timeline-label -->
@@ -213,7 +213,7 @@
 								        <!-- timeline icon -->
 								        <i class="fa fa-envelope bg-blue"></i>
 								        <div class="timeline-item">
-								            <span class="time"><i class="fa fa-clock-o"></i><?php echo (substr($aktivitas->updated_at, 11,15)); ?></span>
+								            <span class="time"><i class="fa fa-clock-o"></i><?php echo (substr($aktivitas->created_at, 11,15)); ?></span>
 								            <?php
 								            switch($aktivitas->kategori_id){
 								            	case 0 : $ktg = "Umum"; break;
@@ -228,20 +228,20 @@
 
 								            <div class="timeline-body">
 								                {{$aktivitas->Keterangan}}
-								            </div> 
+								            </div>  
 
-								            <!-- <div class="timeline-footer">
-								                <a class="btn btn-primary btn-xs">...</a>
-								            </div> -->
+								            <div class="timeline-footer">
+								                <!--<a class="btn btn-primary btn-xs">...</a> -->
+								            </div>
 								        </div>
 								    </li>
 								    <!-- END timeline item -->
 
-								    ...
+								    
 
-								</ul>
 								<?php } ?>
 								@endforeach
+								</ul>
 				</div>
 				</div>
               </div>
@@ -251,14 +251,14 @@
 				<div class="card-header panel-heading">Timeline Publikasi
 				</div>
 				<div class="card-body panel-body">
+								<ul class="timeline">
 								@foreach($aktivitass as $aktivitas)
 								<?php if($aktivitas->user_id == $user_id && $aktivitas->kategori_id == 4){ ?>
-								<ul class="timeline">
 
 								    <!-- timeline time label -->
 								    <li class="time-label">
 								        <span class="bg-red">
-								            <?php echo (substr($aktivitas->updated_at, 0,11)); ?>
+								        	{{\Carbon\Carbon::parse($aktivitas->updated_at)->diffForHumans()}}
 								        </span>
 								    </li>
 								    <!-- /.timeline-label -->
@@ -283,20 +283,20 @@
 
 								            <div class="timeline-body">
 								                {{$aktivitas->Keterangan}}
-								            </div> 
+								            </div>  
 
-								            <!-- <div class="timeline-footer">
-								                <a class="btn btn-primary btn-xs">...</a>
-								            </div> -->
+								            <div class="timeline-footer">
+								                <!--<a class="btn btn-primary btn-xs">...</a> -->
+								            </div>
 								        </div>
 								    </li>
 								    <!-- END timeline item -->
 
-								    ...
+								    
 
-								</ul>
 								<?php } ?>
 								@endforeach
+								</ul>
 				</div>
 				</div>
 
@@ -307,14 +307,14 @@
 				<div class="card-header panel-heading">Timeline Lain-lain
 				</div>
 				<div class="card-body panel-body">
+								<ul class="timeline">
 								@foreach($aktivitass as $aktivitas)
 								<?php if($aktivitas->user_id == $user_id && $aktivitas->kategori_id == 5){ ?>
-								<ul class="timeline">
 
 								    <!-- timeline time label -->
 								    <li class="time-label">
 								        <span class="bg-red">
-								            <?php echo (substr($aktivitas->updated_at, 0,11)); ?>
+								        	{{\Carbon\Carbon::parse($aktivitas->updated_at)->diffForHumans()}}
 								        </span>
 								    </li>
 								    <!-- /.timeline-label -->
@@ -341,18 +341,18 @@
 								                {{$aktivitas->Keterangan}}
 								            </div> 
 
-								            <!-- <div class="timeline-footer">
-								                <a class="btn btn-primary btn-xs">...</a>
-								            </div> -->
+								            <div class="timeline-footer">
+								                <!--<a class="btn btn-primary btn-xs">...</a> -->
+								            </div>
 								        </div>
 								    </li>
 								    <!-- END timeline item -->
 
-								    ...
+								    
 
-								</ul>
 								<?php } ?>
 								@endforeach
+								</ul>
 				</div>
 				</div>
 

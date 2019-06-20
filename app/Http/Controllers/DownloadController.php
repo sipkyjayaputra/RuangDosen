@@ -21,7 +21,7 @@ class DownloadController extends Controller
     	$aktivitas->user_id = auth()->user()->id;;
     	$aktivitas->semester_id = $semester_id;
     	$aktivitas->kategori_id = $kategori_id;
-    	$aktivitas->keterangan = "Download file ".$file_download;
+    	$aktivitas->keterangan = $keterangan;
 
     	$aktivitas->save();
     }
